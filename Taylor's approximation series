@@ -1,0 +1,32 @@
+% Matlab project
+% prep the workspace
+clc
+all clear
+all clos
+% variables 
+
+x=0:.1:2;
+y=expr(x);
+% ploting results
+plot(x,expr(x),'-o','MarkerIndices',1:2:length(y))
+hold on
+plot(x,log(x))
+% bells and whistles
+grid on
+legend('Approximation (Taylor series)', 'ln(1)', 'Location', 'northwest')
+title('Taylor Series Approximation of ln(1)')
+xlabel('x')
+ylabel('y')
+% plugging in pre-calculated function
+function [value] = baseFunction(n,x)
+    a = 1;  % replace value as per task requiraments
+    value = (-1).^(n+1)*(x-a).^n./n; % replace formula for different function
+end
+% summation of 5 degree of approximation
+function [functionEteration] = expr(x)
+    functionEteration = 0;
+    for n=1:5
+        functionEteration = functionEteration + baseFunction(n,x);
+    end
+end
+% this is the end
